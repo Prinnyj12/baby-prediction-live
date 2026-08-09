@@ -1238,61 +1238,83 @@ window.loadGuestPredictions = async function() {
   const list =
     document.getElementById("guestPredictionsList");
 
-  list.innerHTML = "Loading predictions...";
+  const stats =
+    document.getElementById("guestPredictionStats");
+
+  list.innerHTML = "Loading memories...";
 
   try {
 
     const snapshot =
       await getDocs(collection(db,"guestPredictions"));
 
-    if(snapshot.empty) {
+    let boy = 0;
+    let girl = 0;
 
-      list.innerHTML =
-        "<p>No guest predictions yet.</p>";
-
-      return;
-
-    }
-
-    let html = "";
+    let memories = [];
 
     snapshot.forEach(docSnap => {
 
       const data = docSnap.data();
 
-      const emoji =
-        data.guess === "boy"
-        ? "💙"
-        : "💗";
+      if(data.guess === "boy") boy++;
+      if(data.guess === "girl") girl++;
 
-      const gender =
-        data.guess === "boy"
-        ? "BOY"
-        : "GIRL";
-
-      html += `
-        <div style="
-          padding:15px;
-          margin-bottom:10px;
-          border-radius:12px;
-          background:white;
-          border:1px solid #ddd;
-        ">
-
-          <strong>${emoji} ${data.name}</strong>
-
-          <br>
-
-          <span>
-            Predicted <strong>${gender}</strong>
-          </span>
-
-        </div>
-      `;
+      memories.push({
+        name: data.name,
+        guess: data.guess,
+        createdAt: data.createdAt
+      });
 
     });
 
-    list.innerHTML = html;
+    memories.sort((a,b) => {
+
+      const aTime =
+        a.createdAt?.toMillis?.() || 0;
+
+      const bTime =
+        b.createdAt?.toMillis?.() || 0;
+
+      return aTime - bTime;
+
+    });
+
+    const total = boy + girl;
+
+    stats.innerHTML =
+      `💙 ${boy} Boy &nbsp;|&nbsp; 💗 ${girl} Girl &nbsp;|&nbsp; ${total} Total`;
+
+    if(total === 0) {
+
+      list.innerHTML =
+        "<p>No guest memories yet.</p>";
+
+      return;
+
+    }
+
+    list.innerHTML = "";
+
+    memories.forEach(memory => {
+
+      const row =
+        document.createElement("div");
+
+      row.style.padding = "12px";
+      row.style.marginBottom = "8px";
+      row.style.borderRadius = "10px";
+      row.style.background = "white";
+      row.style.border = "1px solid #ddd";
+
+      row.textContent =
+        memory.guess === "boy"
+        ? `💙 ${memory.name} — BOY`
+        : `💗 ${memory.name} — GIRL`;
+
+      list.appendChild(row);
+
+    });
 
   }
 
@@ -1301,7 +1323,144 @@ window.loadGuestPredictions = async function() {
     console.error(error);
 
     list.innerHTML =
-      "❌ Could not load guest predictions.";
+      "❌ Could not load guest memories.";
+
+  }
+
+};
+
+
+/* =========================
+   SAVE MEMORIES
+========================= */
+
+window.saveGuestMemories = async function() {
+
+  if(!auth.currentUser) return;
+
+  try {
+
+    const snapshot =
+      await getDocs(collection(db,"guestPredictions"));
+
+    if(snapshot.empty) {
+
+      alert("There are no guest memories to save yet.");
+
+      return;
+
+    }
+
+    let rows = [
+      ["Guest Name","Prediction"]
+    ];
+
+    snapshot.forEach(docSnap => {
+
+      const data = docSnap.data();
+
+      rows.push([
+        data.name,
+        data.guess === "boy"
+        ? "BOY"
+        : "GIRL"
+      ]);
+
+    });
+
+    const csv =
+      rows
+      .map(row =>
+        row
+        .map(value =>
+          `"${String(value).replace(/"/g,'""')}"`
+        )
+        .join(",")
+      )
+      .join("\n");
+
+    const blob =
+      new Blob([csv], {
+        type:"text/csv;charset=utf-8;"
+      });
+
+    const url =
+      URL.createObjectURL(blob);
+
+    const link =
+      document.createElement("a");
+
+    link.href = url;
+
+    link.download =
+      "Baby-Rodriguez-Guest-Predictions.csv";
+
+    document.body.appendChild(link);
+
+    link.click();
+
+    document.body.removeChild(link);
+
+    URL.revokeObjectURL(url);
+
+  }
+
+  catch(error) {
+
+    console.error(error);
+
+    alert("Could not save memories.");
+
+  }
+
+};
+
+
+/* =========================
+   DELETE ALL MEMORIES
+========================= */
+
+window.deleteGuestMemories = async function() {
+
+  if(!auth.currentUser) return;
+
+  const sure =
+    confirm(
+      "Are you sure? This will permanently delete ALL guest memories. This cannot be undone."
+    );
+
+  if(!sure) return;
+
+  try {
+
+    const snapshot =
+      await getDocs(collection(db,"guestPredictions"));
+
+    for(const memory of snapshot.docs) {
+
+      await deleteDoc(
+        doc(db,"guestPredictions",memory.id)
+      );
+
+    }
+
+    document.getElementById(
+      "guestPredictionsList"
+    ).innerHTML =
+      "<p>All guest memories have been deleted.</p>";
+
+    document.getElementById(
+      "guestPredictionStats"
+    ).innerHTML =
+      "💙 0 Boy &nbsp;|&nbsp; 💗 0 Girl &nbsp;|&nbsp; 0 Total";
+
+  }
+
+  catch(error) {
+
+    console.error(error);
+
+    alert("Could not delete guest memories.");
 
   }
 
