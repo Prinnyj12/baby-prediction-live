@@ -942,11 +942,20 @@ button.textContent="SUBMITTING...";
 try {
 
 await addDoc(
-collection(db,"votes"),
-{
-guess:selectedGuess,
-createdAt:serverTimestamp()
-}
+  collection(db,"votes"),
+  {
+    guess: selectedGuess,
+    createdAt: serverTimestamp()
+  }
+);
+
+await addDoc(
+  collection(db,"guestPredictions"),
+  {
+    name: name,
+    guess: selectedGuess,
+    createdAt: serverTimestamp()
+  }
 );
 
   await addDoc(
