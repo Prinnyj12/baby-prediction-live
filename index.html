@@ -1209,7 +1209,86 @@ status.textContent=
 
 };
 
+/* =========================
+   GUEST PREDICTIONS
+========================= */
 
+window.loadGuestPredictions = async function() {
+
+  if(!auth.currentUser) return;
+
+  const list =
+    document.getElementById("guestPredictionsList");
+
+  list.innerHTML = "Loading predictions...";
+
+  try {
+
+    const snapshot =
+      await getDocs(collection(db,"guestPredictions"));
+
+    if(snapshot.empty) {
+
+      list.innerHTML =
+        "<p>No guest predictions yet.</p>";
+
+      return;
+
+    }
+
+    let html = "";
+
+    snapshot.forEach(docSnap => {
+
+      const data = docSnap.data();
+
+      const emoji =
+        data.guess === "boy"
+        ? "💙"
+        : "💗";
+
+      const gender =
+        data.guess === "boy"
+        ? "BOY"
+        : "GIRL";
+
+      html += `
+        <div style="
+          padding:15px;
+          margin-bottom:10px;
+          border-radius:12px;
+          background:white;
+          border:1px solid #ddd;
+        ">
+
+          <strong>${emoji} ${data.name}</strong>
+
+          <br>
+
+          <span>
+            Predicted <strong>${gender}</strong>
+          </span>
+
+        </div>
+      `;
+
+    });
+
+    list.innerHTML = html;
+
+  }
+
+  catch(error) {
+
+    console.error(error);
+
+    list.innerHTML =
+      "❌ Could not load guest predictions.";
+
+  }
+
+};
+  
 /* =========================
    FINAL REVEAL
 ========================= */
