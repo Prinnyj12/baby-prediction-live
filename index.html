@@ -911,6 +911,14 @@ createdAt:serverTimestamp()
 }
 );
 
+  await addDoc(
+  collection(db,"guestPredictions"),
+  {
+    name:name,
+    guess:selectedGuess,
+    createdAt:serverTimestamp()
+  }
+);
 
 document.getElementById("voteForm").style.display="none";
 
