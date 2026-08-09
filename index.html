@@ -3,12 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Baby Rodriguez Prediction</title>
+<title>Baby Rodriguez</title>
 
 <style>
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
@@ -16,8 +14,10 @@ body {
   color: #3d352c;
 }
 
+button, input { font: inherit; }
+
 /* =========================
-   IPAD VOTING SCREEN
+   VOTING
 ========================= */
 
 .vote-page {
@@ -26,9 +26,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-
-  background:
-    radial-gradient(circle at top, #fffaf0, #f3e9d8 65%, #dfcdb2);
+  background: radial-gradient(circle at top,#fffaf0,#f3e9d8 65%,#dfcdb2);
 }
 
 .vote-card {
@@ -38,25 +36,14 @@ body {
   background: rgba(255,255,255,.96);
   border-radius: 30px;
   text-align: center;
-
-  box-shadow:
-    0 20px 60px rgba(70,50,30,.20);
+  box-shadow: 0 20px 60px rgba(70,50,30,.20);
 }
 
-.flame {
-  font-size: 48px;
-}
+.flame { font-size: 48px; }
 
 .vote-card h1 {
-  margin: 8px 0 5px;
-  font-size: clamp(32px, 7vw, 48px);
-}
-
-.baby-name {
-  margin: 0 0 12px;
-  color: #756858;
-  font-size: clamp(25px, 5vw, 36px);
-  font-weight: bold;
+  margin: 8px 0 12px;
+  font-size: clamp(32px,7vw,48px);
 }
 
 .subtitle {
@@ -73,17 +60,15 @@ label {
   font-weight: bold;
 }
 
-input[type="text"] {
+input[type="text"],
+input[type="email"],
+input[type="password"] {
   width: 100%;
   padding: 17px;
   border: 2px solid #d5c5af;
   border-radius: 15px;
   outline: none;
   font-size: 20px;
-}
-
-input[type="text"]:focus {
-  border-color: #9b8568;
 }
 
 .guess-buttons {
@@ -99,11 +84,6 @@ input[type="text"]:focus {
   cursor: pointer;
   font-size: 26px;
   font-weight: bold;
-  transition: .2s;
-}
-
-.guess-button:hover {
-  transform: translateY(-2px);
 }
 
 .boy {
@@ -121,7 +101,8 @@ input[type="text"]:focus {
   box-shadow: 0 5px 18px rgba(0,0,0,.18);
 }
 
-.cast-button {
+.cast-button,
+.host-button {
   width: 100%;
   margin-top: 25px;
   padding: 19px;
@@ -130,12 +111,8 @@ input[type="text"]:focus {
   background: #3d352c;
   color: white;
   cursor: pointer;
-  font-size: 22px;
+  font-size: 21px;
   font-weight: bold;
-}
-
-.cast-button:disabled {
-  opacity: .5;
 }
 
 .message {
@@ -145,15 +122,9 @@ input[type="text"]:focus {
   font-weight: bold;
 }
 
-/* THANK YOU */
+.thank-you { display: none; }
 
-.thank-you {
-  display: none;
-}
-
-.thank-you h2 {
-  font-size: 38px;
-}
+.thank-you h2 { font-size: 38px; }
 
 .thank-team {
   margin: 30px 0;
@@ -163,7 +134,7 @@ input[type="text"]:focus {
 
 
 /* =========================
-   TV SCREEN
+   TV
 ========================= */
 
 .tv-page {
@@ -172,9 +143,7 @@ input[type="text"]:focus {
   display: flex;
   justify-content: center;
   align-items: center;
-
-  background:
-    radial-gradient(circle at top, #514333, #29241f 75%);
+  background: radial-gradient(circle at top,#514333,#29241f 75%);
   color: white;
 }
 
@@ -184,32 +153,29 @@ input[type="text"]:focus {
   text-align: center;
 }
 
-.tv-flame {
-  font-size: clamp(35px, 5vw, 65px);
-}
+.tv-flame { font-size: clamp(35px,5vw,65px); }
 
 .tv-title {
   margin: 5px 0;
-  font-size: clamp(35px, 6vw, 78px);
+  font-size: clamp(35px,6vw,78px);
   letter-spacing: 3px;
-  text-transform: uppercase;
 }
 
 .tv-baby-name {
   margin: 5px 0 15px;
   color: #f1dfc3;
-  font-size: clamp(28px, 4vw, 52px);
+  font-size: clamp(28px,4vw,52px);
   font-weight: bold;
 }
 
 .tv-subtitle {
   color: #d9c8ad;
-  font-size: clamp(18px, 2vw, 28px);
+  font-size: clamp(18px,2vw,28px);
 }
 
 .vote-total {
   margin: 28px 0;
-  font-size: clamp(22px, 3vw, 35px);
+  font-size: clamp(22px,3vw,35px);
 }
 
 .result-card {
@@ -217,9 +183,7 @@ input[type="text"]:focus {
   border-radius: 30px;
   background: rgba(255,255,255,.97);
   color: #3d352c;
-
-  box-shadow:
-    0 20px 60px rgba(0,0,0,.35);
+  box-shadow: 0 20px 60px rgba(0,0,0,.35);
 }
 
 .result-row {
@@ -232,17 +196,12 @@ input[type="text"]:focus {
 }
 
 .team-name {
-  font-size: clamp(23px, 3vw, 40px);
+  font-size: clamp(23px,3vw,40px);
   font-weight: bold;
 }
 
-.boy-text {
-  color: #236b9d;
-}
-
-.girl-text {
-  color: #c34f79;
-}
+.boy-text { color: #236b9d; }
+.girl-text { color: #c34f79; }
 
 .bar-background {
   height: 38px;
@@ -258,25 +217,22 @@ input[type="text"]:focus {
 }
 
 .boy-bar {
-  background: linear-gradient(90deg, #91cdf3, #236b9d);
+  background: linear-gradient(90deg,#91cdf3,#236b9d);
 }
 
 .girl-bar {
-  background: linear-gradient(90deg, #f5aac3, #c34f79);
+  background: linear-gradient(90deg,#f5aac3,#c34f79);
 }
 
 .percentage {
   text-align: right;
-  font-size: clamp(30px, 4vw, 55px);
+  font-size: clamp(30px,4vw,55px);
   font-weight: bold;
 }
 
-
-/* PREDICTION METER */
-
 .meter-title {
   margin-top: 45px;
-  font-size: clamp(25px, 3vw, 42px);
+  font-size: clamp(25px,3vw,42px);
   font-weight: bold;
 }
 
@@ -284,60 +240,44 @@ input[type="text"]:focus {
   position: relative;
   height: 28px;
   margin: 55px 35px 15px;
-
   border-radius: 20px;
-
-  background:
-    linear-gradient(
-      90deg,
-      #c34f79 0%,
-      #f5aac3 25%,
-      #ddd7cf 50%,
-      #91cdf3 75%,
-      #236b9d 100%
-    );
+  background: linear-gradient(
+    90deg,
+    #c34f79,
+    #f5aac3 25%,
+    #ddd7cf 50%,
+    #91cdf3 75%,
+    #236b9d
+  );
 }
 
 .meter-marker {
   position: absolute;
   top: 50%;
-
   width: 64px;
   height: 64px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
-  transform: translate(-50%, -50%);
-
+  transform: translate(-50%,-50%);
   border: 5px solid #3d352c;
   border-radius: 50%;
-
   background: white;
-
   font-size: 30px;
-
-  box-shadow:
-    0 5px 18px rgba(0,0,0,.3);
-
   transition: left 1s ease;
 }
 
 .meter-labels {
   display: flex;
   justify-content: space-between;
-
   margin: 0 25px;
-
   color: #756858;
-
-  font-size: clamp(11px, 1.5vw, 19px);
+  font-size: clamp(11px,1.5vw,19px);
 }
 
 .prediction {
   margin-top: 30px;
-  font-size: clamp(30px, 4vw, 55px);
+  font-size: clamp(30px,4vw,55px);
   font-weight: bold;
 }
 
@@ -345,19 +285,118 @@ input[type="text"]:focus {
   display: inline-block;
   margin-top: 25px;
   padding: 8px 18px;
-
   border-radius: 30px;
-
   background: #3d352c;
   color: #f1dfc3;
-
   font-size: 14px;
   letter-spacing: 2px;
-  text-transform: uppercase;
 }
 
-@media (max-width: 750px) {
 
+/* =========================
+   FINAL REVEAL
+========================= */
+
+.reveal-page {
+  min-height: 100vh;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle,#66513b,#211d19);
+  color: white;
+  text-align: center;
+}
+
+.reveal-box {
+  width: 100%;
+  max-width: 1100px;
+}
+
+.reveal-box h1 {
+  font-size: clamp(38px,7vw,85px);
+  margin: 10px;
+}
+
+.reveal-baby {
+  color: #f1dfc3;
+  font-size: clamp(30px,5vw,60px);
+  font-weight: bold;
+}
+
+.reveal-message {
+  margin: 35px 0;
+  font-size: clamp(25px,4vw,48px);
+}
+
+.reveal-answer {
+  font-size: clamp(55px,10vw,120px);
+  font-weight: bold;
+  animation: pop 1s ease;
+}
+
+@keyframes pop {
+  0% { transform: scale(.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+
+/* =========================
+   HOST
+========================= */
+
+.host-page {
+  min-height: 100vh;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #302a24;
+}
+
+.host-card {
+  width: 100%;
+  max-width: 650px;
+  padding: 40px;
+  border-radius: 25px;
+  background: white;
+  text-align: center;
+}
+
+.host-card h1 {
+  font-size: 40px;
+}
+
+.host-section {
+  margin-top: 30px;
+  padding: 25px;
+  border-radius: 18px;
+  background: #f5efe6;
+}
+
+.host-section h2 {
+  margin-top: 0;
+}
+
+.host-danger {
+  background: #a63e3e;
+}
+
+.host-reveal-boy {
+  background: #2872a8;
+}
+
+.host-reveal-girl {
+  background: #c4557c;
+}
+
+.host-status {
+  min-height: 25px;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+@media(max-width:750px) {
   .result-row {
     grid-template-columns: 1fr;
     gap: 8px;
@@ -367,10 +406,6 @@ input[type="text"]:focus {
     text-align: left;
   }
 
-  .meter-labels {
-    font-size: 9px;
-  }
-
   .result-card {
     padding: 22px;
   }
@@ -378,707 +413,869 @@ input[type="text"]:focus {
 </style>
 </head>
 
-
 <body>
 
 
 <!-- =========================
-     IPAD VOTING PAGE
+     VOTING SCREEN
 ========================= -->
 
 <div id="votePage" class="vote-page">
 
-  <div class="vote-card">
+<div class="vote-card">
 
-    <div id="voteForm">
+<div id="voteForm">
 
-      <div class="flame">🔥</div>
+<div class="flame">🔥</div>
 
-      <h1>What's Cooking?</h1>
+<h1>What's Cooking?</h1>
 
-      <div class="subtitle">
-        What do you think Baby Rodriguez will be?
-      </div>
+<div class="subtitle">
+What do you think Baby Rodriguez will be?
+</div>
 
+<label>Your Name</label>
 
-      <label for="guestName">
-        Your Name
-      </label>
+<input
+id="guestName"
+type="text"
+placeholder="Enter your name"
+maxlength="50"
+>
 
-      <input
-        type="text"
-        id="guestName"
-        placeholder="Enter your name"
-        maxlength="50"
-        autocomplete="off"
-      >
+<label>Make Your Prediction</label>
 
+<div class="guess-buttons">
 
-      <label>
-        Make Your Prediction
-      </label>
+<button
+id="boyButton"
+class="guess-button boy"
+onclick="selectGuess('boy')">
+💙<br>BOY
+</button>
 
-      <div class="guess-buttons">
+<button
+id="girlButton"
+class="guess-button girl"
+onclick="selectGuess('girl')">
+💗<br>GIRL
+</button>
 
-        <button
-          class="guess-button boy"
-          id="boyButton"
-          onclick="selectGuess('boy')">
+</div>
 
-          💙<br>
-          BOY
+<div id="message" class="message"></div>
 
-        </button>
-
-
-        <button
-          class="guess-button girl"
-          id="girlButton"
-          onclick="selectGuess('girl')">
-
-          💗<br>
-          GIRL
-
-        </button>
-
-      </div>
-
-
-      <div
-        id="message"
-        class="message">
-      </div>
-
-
-      <button
-        id="castButton"
-        class="cast-button"
-        onclick="castVote()">
-
-        CAST MY VOTE
-
-      </button>
-
-    </div>
-
-
-    <!-- THANK YOU -->
-
-    <div id="thankYou" class="thank-you">
-
-      <div class="flame">
-        🔥
-      </div>
-
-      <h2>
-        Thanks,
-        <span id="thankName"></span>!
-      </h2>
-
-      <p>
-        You're officially on...
-      </p>
-
-      <div
-        id="thankTeam"
-        class="thank-team">
-      </div>
-
-      <p>
-        Good luck! 👶
-      </p>
-
-    </div>
-
-  </div>
+<button
+id="castButton"
+class="cast-button"
+onclick="castVote()">
+CAST MY VOTE
+</button>
 
 </div>
 
 
+<div id="thankYou" class="thank-you">
+
+<div class="flame">🔥</div>
+
+<h2>
+Thanks, <span id="thankName"></span>!
+</h2>
+
+<p>You're officially on...</p>
+
+<div id="thankTeam" class="thank-team"></div>
+
+<p>Good luck! 👶</p>
+
+</div>
+
+</div>
+</div>
+
 
 <!-- =========================
-     TV PAGE
+     TV SCREEN
 ========================= -->
 
-<div
-  id="tvPage"
-  class="tv-page"
-  style="display:none;">
+<div id="tvPage" class="tv-page" style="display:none">
 
-  <div class="tv-container">
+<div class="tv-container">
 
-    <div class="tv-flame">
-      🔥
-    </div>
+<div class="tv-flame">🔥</div>
 
-    <div class="tv-subtitle">
-      WHAT'S COOKING?
-    </div>
+<div class="tv-subtitle">
+WHAT'S COOKING?
+</div>
 
-    <h1 class="tv-title">
-      BABY PREDICTION LIVE
-    </h1>
+<h1 class="tv-title">
+BABY PREDICTION LIVE
+</h1>
 
-    <div class="tv-baby-name">
-      Baby Rodriguez
-    </div>
+<div class="tv-baby-name">
+Baby Rodriguez
+</div>
 
-    <div class="tv-subtitle">
-      What does everyone think?
-    </div>
+<div class="tv-subtitle">
+What does everyone think?
+</div>
 
+<div id="voteTotal" class="vote-total">
+0 Votes Cast
+</div>
 
-    <div
-      id="voteTotal"
-      class="vote-total">
+<div class="result-card">
 
-      0 Votes Cast
+<div class="result-row">
 
-    </div>
+<div class="team-name boy-text">
+💙 TEAM BOY
+</div>
 
+<div class="bar-background">
+<div id="boyBar" class="bar boy-bar" style="width:0%"></div>
+</div>
 
-    <div class="result-card">
-
-
-      <!-- BOY -->
-
-      <div class="result-row">
-
-        <div class="team-name boy-text">
-          💙 TEAM BOY
-        </div>
-
-        <div class="bar-background">
-
-          <div
-            id="boyBar"
-            class="bar boy-bar"
-            style="width:0%">
-          </div>
-
-        </div>
-
-        <div
-          id="boyPercentage"
-          class="percentage boy-text">
-
-          0%
-
-        </div>
-
-      </div>
-
-
-      <!-- GIRL -->
-
-      <div class="result-row">
-
-        <div class="team-name girl-text">
-          💗 TEAM GIRL
-        </div>
-
-        <div class="bar-background">
-
-          <div
-            id="girlBar"
-            class="bar girl-bar"
-            style="width:0%">
-          </div>
-
-        </div>
-
-        <div
-          id="girlPercentage"
-          class="percentage girl-text">
-
-          0%
-
-        </div>
-
-      </div>
-
-
-      <!-- METER -->
-
-      <div class="meter-title">
-        🔥 PREDICTION METER
-      </div>
-
-
-      <div class="meter">
-
-        <div
-          id="meterMarker"
-          class="meter-marker"
-          style="left:50%">
-
-          🔥
-
-        </div>
-
-      </div>
-
-
-      <div class="meter-labels">
-
-        <span>Strong Girl</span>
-        <span>Lean Girl</span>
-        <span>EVEN</span>
-        <span>Lean Boy</span>
-        <span>Strong Boy</span>
-
-      </div>
-
-
-      <div
-        id="prediction"
-        class="prediction">
-
-        ⚖️ EVEN
-
-      </div>
-
-
-      <div class="live-label">
-        ● LIVE RESULTS
-      </div>
-
-    </div>
-
-  </div>
+<div id="boyPercentage" class="percentage boy-text">
+0%
+</div>
 
 </div>
 
 
+<div class="result-row">
+
+<div class="team-name girl-text">
+💗 TEAM GIRL
+</div>
+
+<div class="bar-background">
+<div id="girlBar" class="bar girl-bar" style="width:0%"></div>
+</div>
+
+<div id="girlPercentage" class="percentage girl-text">
+0%
+</div>
+
+</div>
+
+
+<div class="meter-title">
+🔥 PREDICTION METER
+</div>
+
+<div class="meter">
+
+<div id="meterMarker"
+class="meter-marker"
+style="left:50%">
+🔥
+</div>
+
+</div>
+
+<div class="meter-labels">
+<span>Strong Girl</span>
+<span>Lean Girl</span>
+<span>EVEN</span>
+<span>Lean Boy</span>
+<span>Strong Boy</span>
+</div>
+
+<div id="prediction" class="prediction">
+⚖️ EVEN
+</div>
+
+<div class="live-label">
+● LIVE RESULTS
+</div>
+
+</div>
+</div>
+</div>
+
 
 <!-- =========================
-     FIREBASE
+     FINAL REVEAL SCREEN
 ========================= -->
+
+<div id="revealPage"
+class="reveal-page"
+style="display:none">
+
+<div class="reveal-box">
+
+<div class="tv-flame">🔥</div>
+
+<div class="tv-subtitle">
+THE PREDICTIONS ARE IN!
+</div>
+
+<div class="reveal-baby">
+BABY RODRIGUEZ
+</div>
+
+<div class="reveal-message">
+Everyone has made their prediction...
+</div>
+
+<div id="finalPrediction">
+</div>
+
+<div id="finalAnswer"
+class="reveal-answer">
+</div>
+
+</div>
+</div>
+
+
+<!-- =========================
+     HOST SCREEN
+========================= -->
+
+<div id="hostPage"
+class="host-page"
+style="display:none">
+
+<div class="host-card">
+
+<div class="flame">🔒</div>
+
+<h1>Host Controls</h1>
+
+<div id="loginArea">
+
+<p>
+Sign in with your host account.
+</p>
+
+<input
+id="hostEmail"
+type="email"
+placeholder="Host email"
+>
+
+<br><br>
+
+<input
+id="hostPassword"
+type="password"
+placeholder="Password"
+>
+
+<button
+class="host-button"
+onclick="hostLogin()">
+SIGN IN
+</button>
+
+<div id="hostLoginMessage"
+class="host-status">
+</div>
+
+</div>
+
+
+<div id="controlsArea"
+style="display:none">
+
+<h2>You're signed in!</h2>
+
+<div class="host-section">
+
+<h2>🗑️ Reset Votes</h2>
+
+<p>
+This permanently deletes all current votes.
+</p>
+
+<button
+class="host-button host-danger"
+onclick="resetVotes()">
+RESET ALL VOTES
+</button>
+
+</div>
+
+
+<div class="host-section">
+
+<h2>🎉 Final Reveal</h2>
+
+<p>
+Choose the actual result when you're ready.
+</p>
+
+<button
+class="host-button host-reveal-boy"
+onclick="revealGender('boy')">
+💙 BABY IS A BOY
+</button>
+
+<button
+class="host-button host-reveal-girl"
+onclick="revealGender('girl')">
+💗 BABY IS A GIRL
+</button>
+
+</div>
+
+
+<div class="host-section">
+
+<h2>Reset Reveal</h2>
+
+<button
+class="host-button"
+onclick="resetReveal()">
+RETURN TV TO PREDICTIONS
+</button>
+
+</div>
+
+
+<button
+class="host-button"
+onclick="hostLogout()">
+LOG OUT
+</button>
+
+<div id="hostStatus"
+class="host-status">
+</div>
+
+</div>
+
+</div>
+</div>
+
 
 <script type="module">
 
 import {
-  initializeApp
+initializeApp
 }
 from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
 
-
 import {
-  getFirestore,
-  collection,
-  addDoc,
-  onSnapshot,
-  serverTimestamp
+getFirestore,
+collection,
+addDoc,
+onSnapshot,
+getDocs,
+deleteDoc,
+doc,
+setDoc,
+getDoc,
+serverTimestamp
 }
 from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
+
+import {
+getAuth,
+signInWithEmailAndPassword,
+signOut,
+onAuthStateChanged
+}
+from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
 
 
 const firebaseConfig = {
 
-  apiKey:
-    "AIzaSyBraozreBizQaGWOhISI9pyHvKZ_aDZKp0",
+apiKey:
+"AIzaSyBraozreBizQaGWOhISI9pyHvKZ_aDZKp0",
 
-  authDomain:
-    "live-gender-prediction.firebaseapp.com",
+authDomain:
+"live-gender-prediction.firebaseapp.com",
 
-  projectId:
-    "live-gender-prediction",
+projectId:
+"live-gender-prediction",
 
-  storageBucket:
-    "live-gender-prediction.firebasestorage.app",
+storageBucket:
+"live-gender-prediction.firebasestorage.app",
 
-  messagingSenderId:
-    "326710255997",
+messagingSenderId:
+"326710255997",
 
-  appId:
-    "1:326710255997:web:22339baf2da24f1dc5ac14",
+appId:
+"1:326710255997:web:22339baf2da24f1dc5ac14",
 
-  measurementId:
-    "G-QQHNVVQFS4"
+measurementId:
+"G-QQHNVVQFS4"
 
 };
 
 
-const app =
-  initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 
-const db =
-  getFirestore(app);
+const db = getFirestore(app);
+
+const auth = getAuth(app);
 
 
 let selectedGuess = null;
 
 
+const params =
+new URLSearchParams(window.location.search);
+
+const screen =
+params.get("screen") || "vote";
+
+
 /* =========================
-   DETERMINE SCREEN
+   SCREEN SELECTION
 ========================= */
 
-const params =
-  new URLSearchParams(
-    window.location.search
-  );
+if(screen === "tv") {
 
+document.getElementById("votePage").style.display="none";
 
-const isTV =
-  params.get("screen") === "tv";
+document.getElementById("tvPage").style.display="flex";
 
+startTV();
 
-if (isTV) {
+}
 
-  document
-    .getElementById("votePage")
-    .style.display = "none";
+else if(screen === "host") {
 
-  document
-    .getElementById("tvPage")
-    .style.display = "flex";
+document.getElementById("votePage").style.display="none";
 
-  startTV();
+document.getElementById("hostPage").style.display="flex";
 
 }
 
 
 /* =========================
-   SELECT BOY / GIRL
+   VOTING
 ========================= */
 
-window.selectGuess =
-function(guess) {
+window.selectGuess = function(guess) {
 
-  selectedGuess = guess;
+selectedGuess = guess;
 
-  document
-    .getElementById("boyButton")
-    .classList.toggle(
-      "selected",
-      guess === "boy"
-    );
+document
+.getElementById("boyButton")
+.classList.toggle("selected",guess==="boy");
 
-  document
-    .getElementById("girlButton")
-    .classList.toggle(
-      "selected",
-      guess === "girl"
-    );
+document
+.getElementById("girlButton")
+.classList.toggle("selected",guess==="girl");
 
-  document
-    .getElementById("message")
-    .textContent = "";
+};
+
+
+window.castVote = async function() {
+
+const name =
+document.getElementById("guestName").value.trim();
+
+const message =
+document.getElementById("message");
+
+const button =
+document.getElementById("castButton");
+
+
+if(!name) {
+
+message.textContent="Please enter your name.";
+
+return;
+
+}
+
+if(!selectedGuess) {
+
+message.textContent="Please choose Boy or Girl.";
+
+return;
+
+}
+
+
+button.disabled=true;
+
+button.textContent="SUBMITTING...";
+
+
+try {
+
+await addDoc(
+collection(db,"votes"),
+{
+guess:selectedGuess,
+createdAt:serverTimestamp()
+}
+);
+
+
+document.getElementById("voteForm").style.display="none";
+
+document.getElementById("thankYou").style.display="block";
+
+document.getElementById("thankName").textContent=name;
+
+document.getElementById("thankTeam").textContent=
+selectedGuess==="boy"
+?"💙 TEAM BOY"
+:"💗 TEAM GIRL";
+
+
+setTimeout(
+()=>window.location.reload(),
+4000
+);
+
+
+}
+
+catch(error) {
+
+console.error(error);
+
+message.textContent=
+"Oops! Your vote didn't go through. Please try again.";
+
+button.disabled=false;
+
+button.textContent="CAST MY VOTE";
+
+}
 
 };
 
 
 /* =========================
-   CAST VOTE
-========================= */
-
-window.castVote =
-async function() {
-
-  const name =
-    document
-      .getElementById("guestName")
-      .value
-      .trim();
-
-  const message =
-    document
-      .getElementById("message");
-
-  const button =
-    document
-      .getElementById("castButton");
-
-
-  if (!name) {
-
-    message.textContent =
-      "Please enter your name.";
-
-    return;
-
-  }
-
-
-  if (!selectedGuess) {
-
-    message.textContent =
-      "Please choose Boy or Girl.";
-
-    return;
-
-  }
-
-
-  button.disabled = true;
-
-  button.textContent =
-    "SUBMITTING...";
-
-
-  try {
-
-    /*
-      The guest name is NOT saved to Firebase.
-      It is only used on this iPad for the
-      thank-you message.
-    */
-
-    await addDoc(
-      collection(db, "votes"),
-      {
-        guess: selectedGuess,
-        createdAt: serverTimestamp()
-      }
-    );
-
-
-    document
-      .getElementById("voteForm")
-      .style.display = "none";
-
-
-    document
-      .getElementById("thankYou")
-      .style.display = "block";
-
-
-    document
-      .getElementById("thankName")
-      .textContent = name;
-
-
-    document
-      .getElementById("thankTeam")
-      .textContent =
-        selectedGuess === "boy"
-          ? "💙 TEAM BOY"
-          : "💗 TEAM GIRL";
-
-
-    /*
-      Reset for the next guest.
-    */
-
-    setTimeout(
-      () => window.location.reload(),
-      4000
-    );
-
-
-  } catch (error) {
-
-    console.error(error);
-
-    message.textContent =
-      "Oops! Your vote didn't go through. Please try again.";
-
-    button.disabled = false;
-
-    button.textContent =
-      "CAST MY VOTE";
-
-  }
-
-};
-
-
-/* =========================
-   TV RESULTS
+   TV
 ========================= */
 
 function startTV() {
 
-  const votesRef =
-    collection(db, "votes");
+onSnapshot(
+collection(db,"votes"),
+snapshot => {
+
+let boy=0;
+let girl=0;
+
+snapshot.forEach(docSnap => {
+
+const vote=docSnap.data().guess;
+
+if(vote==="boy") boy++;
+
+if(vote==="girl") girl++;
+
+});
+
+updateResults(boy,girl);
+
+}
+);
 
 
-  onSnapshot(
-    votesRef,
-    (snapshot) => {
+onSnapshot(
+doc(db,"settings","reveal"),
+snapshot => {
 
-      let boyVotes = 0;
-      let girlVotes = 0;
+if(snapshot.exists()) {
 
+const data=snapshot.data();
 
-      snapshot.forEach(
-        (doc) => {
+if(data.active) {
 
-          const vote =
-            doc.data().guess;
+showReveal(data.gender);
 
+}
 
-          if (vote === "boy") {
-            boyVotes++;
-          }
+}
 
+}
+);
 
-          if (vote === "girl") {
-            girlVotes++;
-          }
-
-        }
-      );
+}
 
 
-      updateResults(
-        boyVotes,
-        girlVotes
-      );
+function updateResults(boy,girl) {
 
-    }
-  );
+const total=boy+girl;
+
+let boyPercent=0;
+let girlPercent=0;
+
+if(total>0) {
+
+boyPercent=Math.round((boy/total)*100);
+
+girlPercent=100-boyPercent;
+
+}
+
+
+document.getElementById("voteTotal").textContent=
+`${total} ${total===1?"Vote":"Votes"} Cast`;
+
+document.getElementById("boyPercentage").textContent=
+`${boyPercent}%`;
+
+document.getElementById("girlPercentage").textContent=
+`${girlPercent}%`;
+
+document.getElementById("boyBar").style.width=
+`${boyPercent}%`;
+
+document.getElementById("girlBar").style.width=
+`${girlPercent}%`;
+
+document.getElementById("meterMarker").style.left=
+`${boyPercent}%`;
+
+
+let prediction;
+
+if(total===0) prediction="⚖️ EVEN";
+else if(boyPercent===girlPercent) prediction="⚖️ EVEN";
+else if(boyPercent>=85) prediction="💙 STRONG BOY";
+else if(boyPercent>=60) prediction="💙 LEANING TOWARD BOY";
+else if(girlPercent>=85) prediction="💗 STRONG GIRL";
+else if(girlPercent>=60) prediction="💗 LEANING TOWARD GIRL";
+else if(boyPercent>girlPercent) prediction="💙 SLIGHTLY LEANING TOWARD BOY";
+else prediction="💗 SLIGHTLY LEANING TOWARD GIRL";
+
+
+document.getElementById("prediction").textContent=
+prediction;
 
 }
 
 
 /* =========================
-   UPDATE TV
+   HOST LOGIN
 ========================= */
 
-function updateResults(
-  boyVotes,
-  girlVotes
-) {
+window.hostLogin = async function() {
 
-  const total =
-    boyVotes + girlVotes;
+const email =
+document.getElementById("hostEmail").value.trim();
 
+const password =
+document.getElementById("hostPassword").value;
 
-  let boyPercent = 0;
-  let girlPercent = 0;
-
-
-  if (total > 0) {
-
-    boyPercent =
-      Math.round(
-        (boyVotes / total) * 100
-      );
-
-    girlPercent =
-      100 - boyPercent;
-
-  }
+const message =
+document.getElementById("hostLoginMessage");
 
 
-  document
-    .getElementById("voteTotal")
-    .textContent =
-      `${total} ${
-        total === 1
-          ? "Vote"
-          : "Votes"
-      } Cast`;
+try {
 
+await signInWithEmailAndPassword(
+auth,
+email,
+password
+);
 
-  document
-    .getElementById("boyPercentage")
-    .textContent =
-      `${boyPercent}%`;
-
-
-  document
-    .getElementById("girlPercentage")
-    .textContent =
-      `${girlPercent}%`;
-
-
-  document
-    .getElementById("boyBar")
-    .style.width =
-      `${boyPercent}%`;
-
-
-  document
-    .getElementById("girlBar")
-    .style.width =
-      `${girlPercent}%`;
-
-
-  /*
-    0 = Strong Girl
-    50 = Even
-    100 = Strong Boy
-  */
-
-  document
-    .getElementById("meterMarker")
-    .style.left =
-      `${boyPercent}%`;
-
-
-  let prediction;
-
-
-  if (total === 0) {
-
-    prediction =
-      "⚖️ EVEN";
-
-  }
-
-  else if (
-    boyPercent === girlPercent
-  ) {
-
-    prediction =
-      "⚖️ EVEN";
-
-  }
-
-  else if (
-    boyPercent >= 85
-  ) {
-
-    prediction =
-      "💙 STRONG BOY";
-
-  }
-
-  else if (
-    boyPercent >= 60
-  ) {
-
-    prediction =
-      "💙 LEANING TOWWARD BOY";
-
-  }
-
-  else if (
-    girlPercent >= 85
-  ) {
-
-    prediction =
-      "💗 STRONG GIRL";
-
-  }
-
-  else if (
-    girlPercent >= 60
-  ) {
-
-    prediction =
-      "💗 LEANING TOWARD GIRL";
-
-  }
-
-  else {
-
-    prediction =
-      boyPercent > girlPercent
-        ? "💙 SLIGHTLY LEANING TOWARD BOY"
-        : "💗 SLIGHTLY LEANING TOWARD GIRL";
-
-  }
-
-
-  document
-    .getElementById("prediction")
-    .textContent =
-      prediction;
+message.textContent="";
 
 }
+
+catch(error) {
+
+console.error(error);
+
+message.textContent=
+"Login failed. Check your email and password.";
+
+}
+
+};
+
+
+onAuthStateChanged(auth,user => {
+
+if(screen !== "host") return;
+
+if(user) {
+
+document.getElementById("loginArea").style.display="none";
+
+document.getElementById("controlsArea").style.display="block";
+
+}
+
+else {
+
+document.getElementById("loginArea").style.display="block";
+
+document.getElementById("controlsArea").style.display="none";
+
+}
+
+});
+
+
+/* =========================
+   RESET VOTES
+========================= */
+
+window.resetVotes = async function() {
+
+if(!auth.currentUser) return;
+
+const sure =
+confirm(
+"Are you sure? This will permanently delete ALL votes."
+);
+
+if(!sure) return;
+
+
+const status =
+document.getElementById("hostStatus");
+
+status.textContent="Resetting votes...";
+
+
+try {
+
+const snapshot =
+await getDocs(collection(db,"votes"));
+
+for(const vote of snapshot.docs) {
+
+await deleteDoc(
+doc(db,"votes",vote.id)
+);
+
+}
+
+status.textContent=
+"✅ All votes have been reset.";
+
+}
+
+catch(error) {
+
+console.error(error);
+
+status.textContent=
+"❌ Reset failed.";
+
+}
+
+};
+
+
+/* =========================
+   FINAL REVEAL
+========================= */
+
+window.revealGender = async function(gender) {
+
+if(!auth.currentUser) return;
+
+
+const answer =
+gender==="boy"
+?"💙 A BOY! 💙"
+:"💗 A GIRL! 💗";
+
+
+const sure =
+confirm(
+`Are you sure Baby Rodriguez is ${gender.toUpperCase()}?`
+);
+
+if(!sure) return;
+
+
+try {
+
+await setDoc(
+doc(db,"settings","reveal"),
+{
+active:true,
+gender:gender,
+revealedAt:serverTimestamp()
+}
+);
+
+
+document.getElementById("hostStatus").textContent=
+"🎉 Final reveal activated!";
+
+}
+
+catch(error) {
+
+console.error(error);
+
+document.getElementById("hostStatus").textContent=
+"❌ Could not activate reveal.";
+
+}
+
+};
+
+
+window.resetReveal = async function() {
+
+if(!auth.currentUser) return;
+
+
+try {
+
+await setDoc(
+doc(db,"settings","reveal"),
+{
+active:false
+}
+);
+
+
+document.getElementById("hostStatus").textContent=
+"Prediction screen restored.";
+
+}
+
+catch(error) {
+
+console.error(error);
+
+}
+
+};
+
+
+/* =========================
+   SHOW FINAL REVEAL
+========================= */
+
+function showReveal(gender) {
+
+document.getElementById("tvPage").style.display="none";
+
+document.getElementById("revealPage").style.display="flex";
+
+
+document.getElementById("finalAnswer").textContent=
+gender==="boy"
+?"💙 A BOY! 💙"
+:"💗 A GIRL! 💗";
+
+}
+
+
+/* =========================
+   LOG OUT
+========================= */
+
+window.hostLogout = async function() {
+
+await signOut(auth);
+
+};
 
 </script>
 
