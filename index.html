@@ -703,14 +703,32 @@ RESET ALL VOTES
 
 <h2>📖 Guest Predictions</h2>
 
-<p>
-See who predicted Boy or Girl.
-</p>
+<div
+id="guestPredictionStats"
+style="
+font-size:22px;
+font-weight:bold;
+margin:15px 0;
+">
+💙 0 Boy &nbsp;|&nbsp; 💗 0 Girl &nbsp;|&nbsp; 0 Total
+</div>
 
 <button
 class="host-button"
 onclick="loadGuestPredictions()">
 VIEW GUEST PREDICTIONS
+</button>
+
+<button
+class="host-button"
+onclick="saveGuestMemories()">
+💾 SAVE MEMORIES
+</button>
+
+<button
+class="host-button host-danger"
+onclick="deleteGuestMemories()">
+🗑️ DELETE ALL MEMORIES
 </button>
 
 <div
