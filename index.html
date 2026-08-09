@@ -978,22 +978,37 @@ updateResults(boy,girl);
 
 
 onSnapshot(
-doc(db,"settings","reveal"),
-snapshot => {
+  doc(db, "settings", "reveal"),
+  snapshot => {
 
-if(snapshot.exists()) {
+    console.log("Reveal update received:", snapshot.exists(), snapshot.data());
 
-const data=snapshot.data();
+    if (snapshot.exists()) {
 
-if(data.active) {
+      const data = snapshot.data();
 
-showReveal(data.gender);
+      if (data.active === true) {
 
-}
+        showReveal(data.gender);
 
-}
+      } else {
 
-}
+        showPredictions();
+
+      }
+
+    } else {
+
+      showPredictions();
+
+    }
+
+  },
+  error => {
+
+    console.error("Reveal listener error:", error);
+
+  }
 );
 
 }
@@ -1265,7 +1280,14 @@ gender==="boy"
 :"💗 A GIRL! 💗";
 
 }
+  
+function showPredictions() {
 
+document.getElementById("revealPage").style.display = "none";
+
+document.getElementById("tvPage").style.display = "flex";
+
+}
 
 /* =========================
    LOG OUT
